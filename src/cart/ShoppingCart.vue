@@ -23,7 +23,7 @@
         </tr>
       </tbody>
     </table>
-    <!-- <h2 class="saleItems">You saved money on these robots:</h2>
+    <h2 class="saleItems">You saved money on these robots:</h2>
     <table>
       <thead>
         <tr>
@@ -45,7 +45,7 @@
           </td>
         </tr>
       </tbody>
-    </table> -->
+    </table>
  </div>
 </template>
 
@@ -56,9 +56,9 @@ export default {
     cart() {
       return this.$store.state.cart;
     },
-    // cartSaleItems() {
-    //   return this.$store.getters['robots/cartSaleItems'];
-    // },
+    cartSaleItems() {
+      return this.$store.getters.cartSaleItems;
+    },
   },
 };
 </script>
