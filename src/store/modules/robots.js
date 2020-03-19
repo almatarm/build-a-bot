@@ -17,8 +17,8 @@ export default {
   actions: {
     getParts({ commit }) {
       axios.get('/api/parts')
-        .then((result) => commit('updateParts', result.data))
-        .catch(console.error);
+        .then((result) => commit('updateParts', result.data));
+      // .catch(console.error);
     },
     addRobotToCart({ commit, state }, robot) {
       const cart = [...state.cart, robot];
