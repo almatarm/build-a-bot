@@ -77,10 +77,21 @@ import CollapsibleSection from '../shared/CollapsibleSection.vue';
 export default {
   name: 'RobotBuilder',
   components: { PartSelector, CollapsibleSection },
+  beforeRouteLeave(to, from, next) {
+    if (this.addedToCart) {
+      next(true);
+    } else {
+      /* eslint no-alert: 0 */
+      /* eslint no-restricted-globals: 0 */
+      const response = confirm('You have not added your robot to your cart, are you sure you want to leave?');
+      next(response);
+    }
+  },
   data() {
     return {
       availableParts,
       cart: [],
+      addedToCart: false,
       selectedRobot: {
         head: {},
         leftArm: {},
@@ -112,11 +123,11 @@ export default {
         + robot.rightArm.cost
         + robot.base.cost;
       this.cart.push({ ...robot, cost });
+      this.addedToCart = true;
     },
   },
 };
 </script>
-
 
 <style lang="scss" scoped>
 .part {
@@ -223,9 +234,9 @@ export default {
 }
 .add-to-cart {
   position: absolute;
-  width:210px;
-  padding:3px;
-  font-size:16px;
+  width: 210px;
+  padding: 3px;
+  font-size: 16px;
 }
 td, th {
   text-align: left;
